@@ -1,0 +1,91 @@
+.box {
+    border-style: outset;
+    border-color: black;
+    padding:10px;
+
+}
+
+.cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#body {
+    display: flex;
+}
+#main_container {
+    display: flex;
+    flex: 1;
+    height: 92vh
+}
+
+#mid_container {
+    flex: 3;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+}
+
+#left_sidebar {
+    flex: 1;
+}
+
+#right_sidebar {
+    flex: 1;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+#right_sidebar_tc {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#right_sidebar_num {
+    display: grid;
+    grid-template-areas: 
+    "num_1 num_2 num_3"
+    "num_4 num_5 num_6"
+    "num_7 num_8 num_9";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+}
+
+#upper_container {
+    display: grid;
+}
+
+#main_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#speakerbox {
+    background-color: gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#lower_container {
+    display: flex;
+    justify-content: center;
+}
+
+#num_container {
+    display: grid;
+    width: 70%;
+    grid-template-areas: 
+    "num_1 num_2 num_3"
+    "num_4 num_5 num_6"
+    "num_7 num_8 num_9"
+    "num_10 num_11 num_12"
+    "num_13 num_14 num_15"
+    "num_16 num_17 num_18";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 10px;
+}
+
+
