@@ -1,7 +1,7 @@
-let wódz = 1;
-let ilosc_cyfr = 3;
-let index_tablicy = 0
-let przedzial = 9
+let wódz = 1; // Główny tracker okienek po środku
+let ilosc_cyfr = 3; // Ile liczb posiada cyfra. For Loop
+let index_tablicy = 0 // Dla wypisywania z tablicy
+let przedzial = 9 // Liczby od 1 - <przedział>, będa się pojawiać (O ile jest tyle okienek)
 let tablica_gracza = [];
 let wylosowana_tablica = [
     String(Math.floor(Math.random() * (przedzial - 1)) + 1),
@@ -9,8 +9,9 @@ let wylosowana_tablica = [
     String(Math.floor(Math.random() * (przedzial - 1)) + 1)
 ];
 
-let próby = 0
-let tracker = 1
+let próby = 0 // Counter prób dla left_container
+let tracker = 1 // Dla kolorów
+let speaker = document.getElementById('speakerbox') // Inicjuje i kończy tekst rozgrywke
 const conts = document.querySelectorAll('.cont');
 
 conts.forEach(cont => {
@@ -42,11 +43,10 @@ conts.forEach(cont => {
                     tracker++
                 }
 
-            
             if (tablica_gracza.join('') === wylosowana_tablica.join('')) {
-        alert('Wygrales! 🎉');
+        speaker.innerText = 'Wygrales! 🎉';
         } else {
-        alert('Spróbuj jeszcze raz 👍')
+        speaker.innerText = 'Spróbuj jeszcze raz 👍';
         
         }
 
