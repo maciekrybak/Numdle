@@ -21,46 +21,46 @@ conts.forEach(cont => {
         // wyświetlamy klikniętą cyfrę
         document.getElementById(`num_${wódz}`).innerText = text;
         
-
         // dodajemy do tablicy gracza
         tablica_gracza.push(text);
         wódz++;
+
+        // zachowujemy Twój linear-gradient dla błędnej liczby
         if (!wylosowana_tablica.includes(text)) {
             cont.style.background = 'linear-gradient( 135deg, #FF6FD8 10%, #3813C2 100%)';
         }
 
         // sprawdzamy czy gracz wypełnił sekwencję
         if (tablica_gracza.length === wylosowana_tablica.length) {
+            let wygrana = tablica_gracza.join('') === wylosowana_tablica.join('');
+
             for (let index_tablicy = 0; index_tablicy < ilosc_cyfr; index_tablicy++) {
                 if (tablica_gracza[index_tablicy] === wylosowana_tablica[index_tablicy]) {
-                    let zielone_tlo = document.getElementById(`num_${tracker}`)
-                    zielone_tlo.style.background = "linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%)";
+                    let zielone_tlo = document.getElementById(`num_${tracker}`);
+                    zielone_tlo.classList.add('zielone'); // efekt fade
+                } else if (wylosowana_tablica.includes(tablica_gracza[index_tablicy])) {
+                    let zolte_tlo = document.getElementById(`num_${tracker}`);
+                    zolte_tlo.classList.add('zolte'); // efekt fade
                 }
-                else if (wylosowana_tablica.includes(tablica_gracza[index_tablicy])) {
-                    let zolte_tlo = document.getElementById(`num_${tracker}`)
-                    zolte_tlo.style.background = "linear-gradient( 135deg, #FDEB71 10%, #F8D800 100%)" ;
-                }
-                    tracker++
-                }
+                tracker++;
+            }
 
-            if (tablica_gracza.join('') === wylosowana_tablica.join('')) {
-        speaker.innerText = 'Wygrales! 🎉';
-        } else {
-        speaker.innerText = 'Spróbuj jeszcze raz 👍';
-        
-        }
+            if (wygrana) {
+                speaker.innerText = 'Wygrales! 🎉';
+            } else {
+                próby++;
+                let ilosc_prób = document.getElementById("left_sidebar_t")
+                ilosc_prób.innerText = `Ilość prób ${próby}/6`;
+
+                if (próby === 6) {
+                    speaker.innerText = 'Przegrales 👎';
+                } else {
+                    speaker.innerText = 'Spróbuj jeszcze raz 👍';
+                }
+            }
 
             // resetujemy gracza
             tablica_gracza = [];
-            próby++
-            let ilosc_prób = document.getElementById("left_sidebar_t")
-            ilosc_prób.innerText = `Ilość prób ${próby}/6`
-
-            if (próby == 6) {
-                speaker.innerText = 'Przegrales 👎';
-            }
-
-
         }
     });
 });
